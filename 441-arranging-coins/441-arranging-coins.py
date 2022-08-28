@@ -1,10 +1,14 @@
 class Solution:
     def arrangeCoins(self, n: int) -> int:
-        i=1
-        while(True):
-            n=n-i
-            i=i+1
-            if(n==0):
-                return i-1
-            if(n<0):
-                return i-2
+        start =1
+        end = n
+        while(start<=end):
+            mid = (start+end)//2
+            s = mid*(mid+1)/2
+            if(s==n):
+                return mid
+            elif(s>n):
+                end = mid -1
+            else:
+                start = mid +1
+        return end
